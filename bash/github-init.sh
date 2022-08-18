@@ -9,7 +9,6 @@ while getopts "h-:" opt; do
   if [ $opt = "-" ]; then
   opt=$OPTARG
   fi
-
   case "$opt" in
     h | help)
       usage
@@ -51,8 +50,6 @@ if [ ! $repo_visibility = "public" ] && [ ! $repo_visibility = "private" ]; then
 fi
 
 repo_url="https://github.com/kyoruni/${repo_name}"
-# repo_visibility="--${repo_visibility}"
-
 git init
 
 # 自分用エイリアス(nameとemailを設定)
