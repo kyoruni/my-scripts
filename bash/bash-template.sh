@@ -10,8 +10,8 @@ EOF
 }
 
 while getopts "h-:" opt; do
-  if [ $opt = "-" ]; then
-  opt=$OPTARG
+  if [ "$opt" = "-" ]; then
+  opt="$OPTARG"
   fi
 
   case "$opt" in
@@ -43,14 +43,14 @@ if [[ ! "$file_name" =~ ^.+\.sh$ ]]; then
 fi
 
 # 存在するファイルであれば、処理を行わない
-if [ -e $file_name ]; then
+if [ -e "$file_name" ]; then
   echo "${file_name} exists"
   exit 0
 fi
 
 # 指定されたファイルを作成
-touch $file_name
-cat << EOF >> $file_name
+touch "$file_name"
+cat << EOF >> "$file_name"
 #!/usr/bin/env bash
 
 exit 0
