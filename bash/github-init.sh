@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -eu
 
 function usage {
   echo "${0} create repository on github."
@@ -6,7 +7,7 @@ function usage {
 }
 
 while getopts "h-:" opt; do
-  if [ $opt = "-" ]; then
+  if [ "$opt" = "-" ]; then
   opt=$OPTARG
   fi
   case "$opt" in
@@ -44,7 +45,7 @@ if [ -z "$repo_visibility" ]; then
   echo "Please input repository visibility."
   exit 0
 fi
-if [ ! $repo_visibility = "public" ] && [ ! $repo_visibility = "private" ]; then
+if [ ! "$repo_visibility" = "public" ] && [ ! "$repo_visibility" = "private" ]; then
   echo "repository visibility is only public or private."
   exit 0
 fi
@@ -61,13 +62,13 @@ git commit -m ":tada: first commit"
 git branch -M main
 
 # repo_descriptionに--publicとか入れて、descriptionにスペースを含む文字列が来るとうまくいかなかった
-if [ $repo_visibility = 'public' ]; then
-  gh repo create $repo_name --description "${repo_description}" --public
+if [ "$repo_visibility" = 'public' ]; then
+  gh repo create "$repo_name" --description "${repo_description}" --public
 else
-  gh repo create $repo_name --description "${repo_description}" --private
+  gh repo create "$repo_name" --description "${repo_description}" --private
 fi
 
-git remote add origin ${repo_url}.git
+git remote add origin "${repo_url}".git
 git push -u origin main
 
 echo "Create repository: ${repo_url}"
