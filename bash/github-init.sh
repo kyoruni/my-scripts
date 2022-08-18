@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 set -eu
 
-function usage {
+usage () {
   echo "${0} create repository on github."
-  echo "no arguments as it is interactive."
 }
 
 while getopts "h-:" opt; do
