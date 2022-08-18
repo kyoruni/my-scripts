@@ -8,7 +8,7 @@ function usage {
 
 while getopts "h-:" opt; do
   if [ "$opt" = "-" ]; then
-  opt=$OPTARG
+    opt=$OPTARG
   fi
   case "$opt" in
     h | help)
