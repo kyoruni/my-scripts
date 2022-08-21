@@ -21,7 +21,7 @@ while getopts "h-:" opt; do
       echo "${0}: illegal option --$opt"
       exit 1
       ;;
-    esac
+  esac
 done
 
 # リポジトリ名
